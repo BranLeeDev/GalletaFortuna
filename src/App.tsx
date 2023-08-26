@@ -5,12 +5,27 @@ function App(): JSX.Element {
   const randomPhrase: string = getRandomPhrase();
   const randomImage: string = getRandomImage();
 
+  const [listToNoRepeat, setListToNoRepeat] = useState<[string, string]>([
+    randomImage,
+    randomPhrase,
+  ]);
+
   const [currentPhrase, setCurrentPhrase] = useState<string>(randomPhrase);
   const [currentImage, setCurrentImage] = useState<string>(randomImage);
 
   const changePhraseAndBackground = (): void => {
-    setCurrentPhrase(getRandomPhrase());
-    setCurrentImage(getRandomImage());
+    let currentImage = getRandomImage();
+    let currentPhrase = getRandomPhrase();
+    if (
+      listToNoRepeat.includes(currentImage) ||
+      listToNoRepeat.includes(currentPhrase)
+    ) {
+      currentImage = getRandomImage();
+      currentPhrase = getRandomPhrase();
+    }
+    setListToNoRepeat([currentImage, currentPhrase]);
+    setCurrentPhrase(currentPhrase);
+    setCurrentImage(currentImage);
   };
 
   return (
