@@ -1,38 +1,25 @@
 import { useState } from "react";
-import { getRandomImage, getRandomPhrase } from "./utils/getRandom";
+import { getRandom } from "./utils/getRandom";
 
 function App(): JSX.Element {
-  const randomPhrase: string = getRandomPhrase();
-  const randomImage: string = getRandomImage();
+  interface JsonData {
+    phrase: string;
+    image: string;
+  }
+  const randomData: JsonData = getRandom();
 
-  const [listToNoRepeat, setListToNoRepeat] = useState<[string, string]>([
-    randomImage,
-    randomPhrase,
-  ]);
-
-  const [currentPhrase, setCurrentPhrase] = useState<string>(randomPhrase);
-  const [currentImage, setCurrentImage] = useState<string>(randomImage);
+  const [currentData, setCurrentData] = useState(randomData);
 
   const changePhraseAndBackground = (): void => {
-    let currentImage = getRandomImage();
-    let currentPhrase = getRandomPhrase();
-    if (
-      listToNoRepeat.includes(currentImage) ||
-      listToNoRepeat.includes(currentPhrase)
-    ) {
-      currentImage = getRandomImage();
-      currentPhrase = getRandomPhrase();
-    }
-    setListToNoRepeat([currentImage, currentPhrase]);
-    setCurrentPhrase(currentPhrase);
-    setCurrentImage(currentImage);
+    const randomData: JsonData = getRandom();
+    setCurrentData(randomData);
   };
 
   return (
     <>
       <main
         className="flex h-screen max-h-[62.5rem] min-h-[30rem] w-full min-w-[20rem] max-w-[125rem] flex-col items-center justify-center gap-12 bg-cover bg-no-repeat font-roboto"
-        style={{ backgroundImage: `url(${currentImage})` }}
+        style={{ backgroundImage: `url(${currentData.image})` }}
       >
         <h1
           className="text-center text-3xl uppercase tracking-wider text-gray-50"
@@ -48,7 +35,7 @@ function App(): JSX.Element {
           }}
         >
           <p className="w-[90%] max-w-[24rem] px-2 text-center text-xs sm:text-lg">
-            {currentPhrase}
+            {currentData.phrase}
           </p>
         </div>
         <button
