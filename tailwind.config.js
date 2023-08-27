@@ -6,6 +6,9 @@ export default {
       fontFamily: {
         roboto: ["Roboto", "sans-serif"],
       },
+      screens: {
+        "3xl": "2000px",
+      },
     },
   },
   plugins: [],
