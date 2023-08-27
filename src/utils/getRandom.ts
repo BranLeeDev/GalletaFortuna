@@ -1,5 +1,16 @@
-import phrases from "./phrases.json";
-import images from "./images.json";
+import phrasesData from "./phrases.json";
+import imagesData from "./images.json";
+
+interface PhraseData {
+  phrase: string;
+}
+
+interface ImageData {
+  image: string;
+}
+
+const phrases: PhraseData[] = phrasesData;
+const images: ImageData[] = imagesData;
 
 function getRandomPhrase(): string {
   const randomIndex: number = Math.floor(Math.random() * phrases.length);
