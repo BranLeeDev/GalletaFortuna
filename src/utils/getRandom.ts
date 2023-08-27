@@ -9,6 +9,11 @@ interface ImageData {
   image: string;
 }
 
+interface JsonData {
+  phrase: string;
+  image: string;
+}
+
 const phrases: PhraseData[] = phrasesData;
 const images: ImageData[] = imagesData;
 
@@ -24,4 +29,14 @@ function getRandomImage(): string {
   return urlImage;
 }
 
-export { getRandomPhrase, getRandomImage };
+function getRandom(): JsonData {
+  const phrase = getRandomPhrase();
+  const image = getRandomImage();
+  const result = {
+    phrase,
+    image,
+  };
+  return result;
+}
+
+export { getRandom };
