@@ -8,7 +8,7 @@ function App(): JSX.Element {
   }
   const randomData: JsonData = getRandom();
 
-  const [currentData, setCurrentData] = useState(randomData);
+  const [currentData, setCurrentData] = useState<JsonData>(randomData);
 
   const changePhraseAndBackground = (): void => {
     const randomData: JsonData = getRandom();
