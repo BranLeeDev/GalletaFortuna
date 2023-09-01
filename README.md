@@ -15,7 +15,7 @@ tu día con su sabiduría. Fue desarrollado utilizando las tecnologías Vite, Re
 
 ## Enlace de la pagina web
 
-[Counter](https://galleta-fortuna-xi.vercel.app/)
+[Galleta Fortuna](https://galleta-fortuna-xi.vercel.app/)
 
 ## Vista previa
 
